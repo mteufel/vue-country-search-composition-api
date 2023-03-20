@@ -1,48 +1,28 @@
-<template>
-  <div id="app">
-    <AppHeader title="Welcome to Flag Search" />
-    <CountryPanel @countryChanged="countryChanged">
-      <CountrySearch />
-      <CountryFlag :country="country" />
-    </CountryPanel>
-  </div>
-</template>
+<script setup>
+  
+  import { ref } from 'vue'
+  import AppHeader from './components/AppHeader.vue'
+  import CountryPanel from './components/CountryPanel.vue'
+  import CountrySearch from './components/CountrySearch.vue'
+  import CountryDetail from './components/CountryDetail.vue';
+  
+  const country = ref('DE')
 
-<script>
-import AppHeader from "./components/AppHeader.vue";
-import CountrySearch from "./components/CountrySearch.vue"
-import CountryPanel from "./components/CountryPanel.vue"
-import CountryFlag from "./components/CountryFlag.vue";
-
-export default {
-  name: "App",
-  data() {
-    return {
-      country: 'gb'
-    }
-  },
-  methods: {
-    countryChanged(value) {
-      console.log('event angekommen:' + value)
-      this.country = value
-    }
-  },
-  components: {
-    AppHeader,
-    CountryPanel,
-    CountrySearch,
-    CountryFlag
-  }
-};
 </script>
 
+<template id="app">
+    <div>
+      <AppHeader title="Welcome to Country Search"></AppHeader>
+      <CountryPanel>
+        <CountrySearch />
+        <CountryDetail :country="country" />
+      </CountryPanel>
+    </div>
+</template>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    display: grid;
+    grid-template-columns: 100%;
+  }
 </style>

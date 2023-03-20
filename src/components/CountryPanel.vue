@@ -1,12 +1,13 @@
-<template>
-  <div>
-    <slot></slot>
-  </div>
-</template>
-
 <script>
-
-export default {
-  name: "CountryPanel"
-};
+    export default {
+        name: "CountryPanel"
+    };
 </script>
+
+<template>
+    <div>
+      <slot></slot>
+    </div>
+</template>
+  
+ 

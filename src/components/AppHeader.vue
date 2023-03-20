@@ -1,14 +1,17 @@
-<template>
-  <div>
-    <h1>{{ title }}</h1>
-  </div>
-</template>
-
 <script>
-export default {
-  name: "AppHeader",
-  props: {
-    title: String
-  }
-};
+    export default {
+        name: "AppHeader"
+    }
 </script>
+
+<script setup>
+    const props = defineProps({
+        title: String
+    })
+</script>
+
+<template>
+    <p>
+      <h1>{{ title }}</h1>
+    </p>
+</template>
