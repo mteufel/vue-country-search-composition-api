@@ -6,7 +6,11 @@
   import CountrySearch from './components/CountrySearch.vue'
   import CountryDetail from './components/CountryDetail.vue';
   
-  const country = ref('DE')
+  import countryStore from './data/countryStore'
+
+  const country = ref(countryStore.getSelectedCountry())
+
+  countryStore.subscribe( () => country.value = countryStore.getSelectedCountry()  )
 
 </script>
 

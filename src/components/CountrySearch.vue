@@ -8,26 +8,18 @@
 
     import { ref } from 'vue'
     import { Select } from 'ant-design-vue'
-    import { searchForCountries, firstRows } from '../data/countries'
+    import countryStore from '../data/countryStore'
 
     const countries = ref( [ ] )
 
     function handleChange(search) {
-        countries.value = [] 
-        if (search === "") {
-            return
-        }
-        // search the countries an convert to an array that is understandable for ant design
-        let result = searchForCountries(search).map( c => {
-            return { value: c.cca2, label: c.name.official }
-        })
-        // shrink result down to 10 countries max
-        countries.value = firstRows(result, 10)
+        countryStore.doSearch(search)
+        countries.value = countryStore.getOptions()
     }
 
     function countrySelected(cca2) {
         console.log('Country selected: ', cca2)
-        // TODO
+        countryStore.setCountry(cca2)
     }
 
 </script>
