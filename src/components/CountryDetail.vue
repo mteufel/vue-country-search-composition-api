@@ -6,11 +6,12 @@ export default {
 </script>
 
 <script setup>
-    import { ref } from 'vue'
+    import { ref, computed } from 'vue'
     import { Table } from 'ant-design-vue'
     import { getCountryByCCA2 } from '../data/countries'
     import CountryFlag from './CountryFlag.vue';
     
+   
     const props = defineProps({
         country: String
     })
@@ -21,9 +22,10 @@ export default {
                         { title: 'Region', dataIndex: 'region' }
                      ] )
 
-    let c = getCountryByCCA2(props.country)
-    
-    const daten = ref ( [ { name: c.name.official, kuerzel: c.cca2, hauptstadt: c.capital, region: c.region } ] )
+    const daten = computed( () => {
+        let c = getCountryByCCA2(props.country)
+        return [ { name: c.name.official, kuerzel: c.cca2, hauptstadt: c.capital, region: c.region } ]
+    })     
 
 </script>
 
