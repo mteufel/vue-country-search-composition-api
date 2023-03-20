@@ -6,11 +6,13 @@
 
 <script setup>
 
-    import { ref } from 'vue'
+    import { ref, defineEmits } from 'vue'
     import { Select } from 'ant-design-vue'
     import { searchForCountries, firstRows } from '../data/countries'
 
     const countries = ref( [ ] )
+
+    const emit = defineEmits(['country-changed'])
 
     function handleChange(search) {
         countries.value = [] 
@@ -27,7 +29,7 @@
 
     function countrySelected(cca2) {
         console.log('Country selected: ', cca2)
-        // TODO
+        emit('country-changed', cca2)
     }
 
 </script>

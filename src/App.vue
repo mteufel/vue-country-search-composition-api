@@ -8,13 +8,17 @@
   
   const country = ref('DE')
 
+  function countryHasBeenChanged(selectedCountry) {
+    country.value = selectedCountry
+  }
+
 </script>
 
 <template id="app">
     <div>
       <AppHeader title="Welcome to Country Search"></AppHeader>
       <CountryPanel>
-        <CountrySearch />
+        <CountrySearch @country-changed="countryHasBeenChanged"/>
         <CountryDetail :country="country" />
       </CountryPanel>
     </div>
