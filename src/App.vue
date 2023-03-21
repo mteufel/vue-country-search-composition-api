@@ -1,12 +1,13 @@
 <script setup>
   
-  import { ref } from 'vue'
+  import { ref, provide } from 'vue'
   import AppHeader from './components/AppHeader.vue'
   import CountryPanel from './components/CountryPanel.vue'
   import CountrySearch from './components/CountrySearch.vue'
   import CountryDetail from './components/CountryDetail.vue';
   
-  const country = ref('DE')
+  const country = ref('US')
+  provide('country', country)
 
 </script>
 
@@ -15,7 +16,7 @@
       <AppHeader title="Welcome to Country Search"></AppHeader>
       <CountryPanel>
         <CountrySearch />
-        <CountryDetail :country="country" />
+        <CountryDetail />
       </CountryPanel>
     </div>
 </template>

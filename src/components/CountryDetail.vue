@@ -6,15 +6,12 @@ export default {
 </script>
 
 <script setup>
-    import { ref, computed } from 'vue'
+    import { ref, computed, inject } from 'vue'
     import { Table } from 'ant-design-vue'
     import { getCountryByCCA2 } from '../data/countries'
     import CountryFlag from './CountryFlag.vue';
-    
    
-    const props = defineProps({
-        country: String
-    })
+    const country = inject('country')
 
     const cols = ref( [ { title: 'Name', dataIndex: 'name'  },
                         { title: 'Kürzel', dataIndex: 'kuerzel'  },
@@ -23,7 +20,7 @@ export default {
                      ] )
 
     const daten = computed( () => {
-        let c = getCountryByCCA2(props.country)
+        let c = getCountryByCCA2(country.value)
         return [ { name: c.name.official, kuerzel: c.cca2, hauptstadt: c.capital, region: c.region } ]
     })     
 

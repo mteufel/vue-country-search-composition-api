@@ -6,11 +6,13 @@
 
 <script setup>
 
-    import { ref } from 'vue'
+    import { ref, inject, provide } from 'vue'
     import { Select } from 'ant-design-vue'
     import { searchForCountries, firstRows } from '../data/countries'
+import { getKeyThenIncreaseKey } from 'ant-design-vue/lib/message';
 
     const countries = ref( [ ] )
+    const country = inject('country')
 
     function handleChange(search) {
         countries.value = [] 
@@ -27,7 +29,7 @@
 
     function countrySelected(cca2) {
         console.log('Country selected: ', cca2)
-        // TODO
+        country.value = cca2
     }
 
 </script>

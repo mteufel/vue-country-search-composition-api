@@ -5,11 +5,9 @@
 </script>
 
 <script setup>
-    import { computed } from 'vue'
-    const props = defineProps({
-        country: String
-    })
-    const flagCss = computed( () => "flag flag-" + props.country.toLocaleLowerCase())     
+    import { computed, inject } from 'vue'
+    const country = inject('country')
+    const flagCss = computed( () => "flag flag-" + country.value.toLocaleLowerCase())     
 </script>
 
 <template>
